@@ -6,13 +6,18 @@ public:
         for(auto &x: nums)
             mp[x]++;
         
-        priority_queue<pair<int,int>> pq;
+        vector<pair<int,int>> pq;
         for(auto &x:mp)
-            pq.push({x.second,x.first});
+            pq.push_back({x.second,x.first});
+        
+        sort(pq.begin(), pq.end());
+        reverse(pq.begin(), pq.end());
+        int i = 0;
         while(k--)
         {
-            ans.push_back(pq.top().second);
-            pq.pop();
+            ans.push_back(pq[i].second);
+            i++;
+            // pq.pop_();
         }
         return ans;
     }
